@@ -88,28 +88,30 @@ console.log("De afdeling Customer Service heeft " + departments["customer-servic
 console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager. " + departments.sales.jobs[1].description);
 
 //Opdracht 2
-const userInput = prompt('Hoi! Hoe heet je?');
-console.log(userInput);
-//Uitwerking 2a:
-const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]').toLowerCase();
-console.log(userInput);
+// const userInput = prompt('Hoi! Hoe heet je?');
+// console.log(userInput);
 
 
-//Uitwerking 2b:
-switch (userInput) {
-    case 'marketing':
-        console.log("Je koos marketing. " + departments.marketing.description);
-        break;
-    case 'sales':
-        console.log("Je koos sales. " + departments.sales.description);
-        break;
-    case 'customer-service':
-        console.log("Je koos customer-service. " + departments["customer-service"].description);
-        break;
-    default:
-        console.log("Oeps, dit wordt niet herkend. Kies aub uit: marketing, sales of customer-service.");//Uitwerking 2c
-        break;
-}
+// //Uitwerking 2a:
+// const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]').toLowerCase();
+// console.log(userInput);
+//
+//
+// //Uitwerking 2b:
+// switch (userInput) {
+//     case 'marketing':
+//         console.log("Je koos marketing. " + departments.marketing.description);
+//         break;
+//     case 'sales':
+//         console.log("Je koos sales. " + departments.sales.description);
+//         break;
+//     case 'customer-service':
+//         console.log("Je koos customer-service. " + departments["customer-service"].description);
+//         break;
+//     default:
+//         console.log("Oeps, dit wordt niet herkend. Kies aub uit: marketing, sales of customer-service.");//Uitwerking 2c
+//         break;
+// }
 
 // // Opdracht: 3a, De input is nu een constant. Dit om te simuleren dat de gebruiker de afdeling marketing heeft gekozen.
 // const afdelingInput = "marketing";
@@ -138,3 +140,34 @@ switch (userInput) {
 //         console.log("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
 //         break;
 // }
+
+// Opdracht 4:
+// Uitwerking 4a:
+const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]').toLowerCase();
+console.log(`${userInput} is een leuke afdeling om te werken. Er werken op dit moment ${departments[userInput].numberOfEmployees} medewerkers.`);
+// Uitwerking 4b:
+// de prompt opbouwen met de gekozen functie vanuit de gebruiker
+let functiePrompt = `Je koos ${userInput}. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n`;
+
+functiePrompt += `0: ${departments[userInput].jobs[0].title}\n`;
+functiePrompt += `1: ${departments[userInput].jobs[1].title}\n`;
+functiePrompt += `2: ${departments[userInput].jobs[2].title}\n`;
+functiePrompt += `3: ${departments[userInput].jobs[3].title}\n`;
+
+const functieKeuze = prompt(functiePrompt);
+console.log(functieKeuze);
+
+// Uitwerking: 4c: Gebruik de functie keuze vanuit de gebruiker om de beslisboom te vullen.
+// Switch case om de keuzes weer te geven.
+switch (functieKeuze) {
+    case "0":
+    case "1":
+    case "2":
+    case "3":
+        const gekozenFunctie = departments[userInput].jobs[functieKeuze];
+        console.log(`Je koos ${gekozenFunctie.title}. Een uitdagende rol! ${gekozenFunctie.description}`);
+        break;
+    default://Opdracht 3c:
+        console.log("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+        break;
+}
